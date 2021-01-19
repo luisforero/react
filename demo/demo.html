@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Demo</title>
+</head>
+<body>
+
+<div id="app"></div>
+<!-- ... other HTML ... -->
+
+<!-- Load React. -->
+<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+<script type="text/javascript">
+    // function Title() {
+    //     return React.createElement('h1', {style: {color: ''}}, "Esto es un elemento renderizado por React");
+    // }
+    //
+    // function Paragraph() {
+    //     return React.createElement('p', null, "Esto es un párrafo generado por React");
+    // }
+    //
+    // function Container() {
+    //     return React.createElement('section', null, Title(), Paragraph())
+    // }
+    //
+    // ReactDOM.render(Container(), document.getElementById("app"));
+    var seconds = 0;
+
+    function Counter() {
+        return React.createElement('h1', null, 'La cantidad de segundos desde que se abrió la página es: ', seconds);
+    }
+
+    window.setInterval(function() {
+            seconds++;
+            ReactDOM.render(Counter(), document.getElementById('app'));
+        }, 1000);
+
+    ReactDOM.render(Counter(), document.getElementById('app'));
+
+</script>
+</body>
+</html>

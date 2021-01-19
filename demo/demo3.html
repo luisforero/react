@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Demo</title>
+</head>
+<body>
+
+<div id="app"></div>
+<!-- ... other HTML ... -->
+
+<!-- Load React. -->
+<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    var endRace = new Date('2021-01-19T23:00:00');
+
+    function TimeLeft() {
+        let today = new Date();
+        let dd = (endRace.getDay()) - (today.getDay());
+        let hours = (endRace.getHours() + 1) - (today.getHours() + 1);
+        let minutes = 60 + (endRace.getMinutes() + 1) - (today.getMinutes() + 1);
+        let seconds = 60 + (endRace.getSeconds() + 1) - (today.getSeconds() + 1);
+        return <strong>{today.toLocaleDateString()} {today.toLocaleTimeString()} Faltan {dd} dias, {hours} horas, {minutes} minutos
+            y {seconds} segundos para el fin de la
+            carrera {endRace.toLocaleDateString()} - {endRace.toLocaleTimeString()}</strong>
+    }
+
+    window.setInterval(function () {
+        ReactDOM.render(TimeLeft(), document.getElementById('app'));
+    }, 1000);
+
+</script>
+</body>
+</html>
